@@ -32,7 +32,7 @@ pipeline {
             steps {
                 echo 'Starting SonarQube analysis'
                 withSonarQubeEnv('SonarQube-Local') {
-                    bat 'mvn sonar:sonar'
+                    bat 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121:sonar -Dsonar.host.url=%SONAR_HOST_URL% -Dsonar.token=%SONAR_AUTH_TOKEN% -Dsonar.scanner.skipJreProvisioning=true'
                 }
             }
         }
